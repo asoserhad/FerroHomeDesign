@@ -22,6 +22,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.base.PageInitiliazer;
 
 
+
 public class CommonMethods extends PageInitiliazer{
 	
 	/**
@@ -158,6 +159,9 @@ public class CommonMethods extends PageInitiliazer{
 	 * 
 	 * @param fileName
 	 */
+	
+	public static final String SCREENSHOTS_FILEPATH=System.getProperty("user.dir")+"/target/screenshots/";
+	
 	public static byte[] takeScreenshot(String fileName) {
 
 		TakesScreenshot ts = (TakesScreenshot)driver;
@@ -170,7 +174,7 @@ public class CommonMethods extends PageInitiliazer{
 		String timeStamp = sdf.format(date.getTime());
 
 		File file = ts.getScreenshotAs(OutputType.FILE);
-		String scrshotFile = "C:\\Users\\ASO\\Desktop\\WebDrivers\\multipurpuse" + fileName + timeStamp + ".png";
+		String scrshotFile = SCREENSHOTS_FILEPATH + fileName + timeStamp + ".png";
 
 		try {
 			FileUtils.copyFile(file, new File(scrshotFile));
